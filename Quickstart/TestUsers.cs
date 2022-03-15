@@ -6,86 +6,38 @@ using IdentityModel;
 using IdentityServer4.Test;
 using System.Collections.Generic;
 using System.Security.Claims;
-using System.Text.Json;
-using IdentityServer4;
 
-namespace IdentityServerHost.Quickstart.UI
+namespace IdentityServer4.Quickstart.UI
 {
     public class TestUsers
     {
-        public static List<TestUser> Users
+        public static List<TestUser> Users = new List<TestUser>
         {
-            get
-            {
-                var address = new
+            new TestUser{SubjectId = "818727", Username = "alice", Password = "alice", 
+                Claims = 
                 {
-                    street_address = "One Hacker Way",
-                    locality = "Heidelberg",
-                    postal_code = 69118,
-                    country = "Germany"
-                };
-                
-                return new List<TestUser>
+                    new Claim(JwtClaimTypes.Name, "Alice Smith"),
+                    new Claim(JwtClaimTypes.GivenName, "Alice"),
+                    new Claim(JwtClaimTypes.FamilyName, "Smith"),
+                    new Claim(JwtClaimTypes.Email, "AliceSmith@email.com"),
+                    new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
+                    new Claim(JwtClaimTypes.WebSite, "http://alice.com"),
+                    new Claim(JwtClaimTypes.Address, @"{ 'street_address': 'One Hacker Way', 'locality': 'Heidelberg', 'postal_code': 69118, 'country': 'Germany' }", IdentityServer4.IdentityServerConstants.ClaimValueTypes.Json)
+                }
+            },
+            new TestUser{SubjectId = "88421113", Username = "bob", Password = "bob", 
+                Claims = 
                 {
-                    new TestUser
-                    {
-                        SubjectId = "818727",
-                        Username = "alice",
-                        Password = "alice",
-                        Claims =
-                        {
-                            new Claim(JwtClaimTypes.Name, "Alice Smith"),
-                            new Claim(JwtClaimTypes.GivenName, "Alice"),
-                            new Claim(JwtClaimTypes.FamilyName, "Smith"),
-                            new Claim(JwtClaimTypes.Email, "AliceSmith@email.com"),
-                            new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
-                            new Claim(JwtClaimTypes.WebSite, "http://alice.com"),
-                            new Claim(JwtClaimTypes.Address, JsonSerializer.Serialize(address), IdentityServerConstants.ClaimValueTypes.Json)
-                        }
-                    },
-                    new TestUser
-                    {
-                        SubjectId = "88421113",
-                        Username = "bob",
-                        Password = "bob",
-                        Claims =
-                        {
-                            new Claim(JwtClaimTypes.Name, "Bob Smith"),
-                            new Claim(JwtClaimTypes.GivenName, "Bob"),
-                            new Claim(JwtClaimTypes.FamilyName, "Smith"),
-                            new Claim(JwtClaimTypes.Email, "BobSmith@email.com"),
-                            new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
-                            new Claim(JwtClaimTypes.WebSite, "http://bob.com"),
-                            new Claim(JwtClaimTypes.Address, JsonSerializer.Serialize(address), IdentityServerConstants.ClaimValueTypes.Json)
-                        }
-                    }
-                    ,
-                    new TestUser
-                    {
-                        SubjectId = "a0214c35-b427-4cb4-a20a-852901e0db64",
-                        Username = "Alejandro",
-                        Password = "AlejandroPass",
-                        Claims = new List<Claim>
-                        {
-                            new Claim("given_name", "Alex"),
-                            new Claim("family_name", "Picazo"),
-                            new Claim("address", "Dirección de Alex")
-                        }
-                    },
-                    new TestUser
-                    {
-                        SubjectId = "3eee12b1-94fb-4939-896a-6847ea813d32",
-                        Username = "Rodrigo",
-                        Password = "RodrigoPass",
-                        Claims = new List<Claim>
-                        {
-                            new Claim("given_name", "Rodri"),
-                            new Claim("family_name", "Picazo"),
-                            new Claim(JwtClaimTypes.Address, "Dirección de Rodrigo"),
-                        }
-                    }
-                };
+                    new Claim(JwtClaimTypes.Name, "Bob Smith"),
+                    new Claim(JwtClaimTypes.GivenName, "Bob"),
+                    new Claim(JwtClaimTypes.FamilyName, "Smith"),
+                    new Claim(JwtClaimTypes.Email, "BobSmith@email.com"),
+                    new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
+                    new Claim(JwtClaimTypes.WebSite, "http://bob.com"),
+                    new Claim(JwtClaimTypes.Address, @"{ 'street_address': 'One Hacker Way', 'locality': 'Heidelberg', 'postal_code': 69118, 'country': 'Germany' }", IdentityServer4.IdentityServerConstants.ClaimValueTypes.Json),
+                    new Claim("location", "somewhere")
+                }
             }
-        }
+        };
     }
 }

@@ -2,47 +2,87 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
-using IdentityServer4;
 using IdentityServer4.Models;
 using System.Collections.Generic;
 
-namespace IdentityServer
+namespace identity
 {
     public static class Config
     {
-        public static IEnumerable<IdentityResource> IdentityResources =>
-            new IdentityResource[]
-            { 
-                new IdentityResources.OpenId(),
-                new IdentityResources.Profile()
-            };
-
-        public static IEnumerable<ApiScope> ApiScopes =>
-            new ApiScope[]
-            { };
-
-        public static IEnumerable<ApiResource> Apis =>
-            new ApiResource[]
-            { };
-
-        public static IEnumerable<Client> Clients =>
-            new Client[] 
+        public static IEnumerable<IdentityResource> GetIdentityResources()
+        {
+            return new IdentityResource[]
             {
-               new Client
+                new IdentityResources.OpenId(),
+                new IdentityResources.Profile(),
+            };
+        }
+
+        public static IEnumerable<ApiResource> GetApis()
+        {
+            return new ApiResource[]
+            {
+                new ApiResource("api1", "My API #1")
+            };
+        }
+
+        public static IEnumerable<Client> GetClients()
+        {
+            return new[]
+            {
+                // client credentials flow client
+                new Client
                 {
-                    ClientName = "UserApiClient",
-                    ClientId = "userapiclient",
-                    AllowedGrantTypes = GrantTypes.Code,
-                    RedirectUris = new List<string>{ "https://localhost:5010/signin-oidc"},
-                    AllowedScopes = {
-                        IdentityServerConstants.StandardScopes.OpenId,
-                        IdentityServerConstants.StandardScopes.Profile,
-                        IdentityServerConstants.StandardScopes.Address
+                    ClientId = "client",
+                    ClientName = "Client Credentials Client",
+
+                    AllowedGrantTypes = GrantTypes.ClientCredentials,
+                    ClientSecrets = { new Secret("511536EF-F270-4058-80CA-1C89C192F69A".Sha256()) },
+
+                    AllowedScopes = { "api1" }
+                },
+
+                // MVC client using hybrid flow
+                new Client
+                {
+                    ClientId = "mvc",
+                    ClientName = "MVC Client",
+
+                    AllowedGrantTypes = GrantTypes.HybridAndClientCredentials,
+                    ClientSecrets = { new Secret("49C1A7E1-0C79-4A89-A3D6-A37998FB86B0".Sha256()) },
+
+                    RedirectUris = { "http://localhost:5001/signin-oidc" },
+                    FrontChannelLogoutUri = "http://localhost:5001/signout-oidc",
+                    PostLogoutRedirectUris = { "http://localhost:5001/signout-callback-oidc" },
+
+                    AllowOfflineAccess = true,
+                    AllowedScopes = { "openid", "profile", "api1" }
+                },
+
+                // SPA client using implicit flow
+                new Client
+                {
+                    ClientId = "spa",
+                    ClientName = "SPA Client",
+                    ClientUri = "http://identityserver.io",
+
+                    AllowedGrantTypes = GrantTypes.Implicit,
+                    AllowAccessTokensViaBrowser = true,
+
+                    RedirectUris =
+                    {
+                        "http://localhost:5002/index.html",
+                        "http://localhost:5002/callback.html",
+                        "http://localhost:5002/silent.html",
+                        "http://localhost:5002/popup.html",
                     },
-                    ClientSecrets = { new Secret("UserClientSecret".Sha512())},
-                    RequireConsent = true,
-                    PostLogoutRedirectUris = new List<string>{ "https://localhost:5010/signout-callback-oidc" }
+
+                    PostLogoutRedirectUris = { "http://localhost:5002/index.html" },
+                    AllowedCorsOrigins = { "http://localhost:5002" },
+
+                    AllowedScopes = { "openid", "profile", "api1" }
                 }
             };
+        }
     }
 }

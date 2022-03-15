@@ -1,0 +1,92 @@
+2022-03-14 16:47:15.408 -06:00 [FTL] Application startup exception
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Microsoft.Extensions.DependencyInjection.IdentityServerBuilderExtensionsCrypto.AddDeveloperSigningCredential(IIdentityServerBuilder builder, Boolean persistKey, String filename) in C:\local\identity\server4\IdentityServer4\src\IdentityServer4\Configuration\DependencyInjection\BuilderExtensions\Crypto.cs:line 118
+   at identity.Startup.ConfigureServices(IServiceCollection services) in C:\Users\alberth\Desktop\IdentityServer4\IdentityServer4\Startup.cs:line 91
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Hosting.ConventionBasedStartup.ConfigureServices(IServiceCollection services)
+   at Microsoft.AspNetCore.Hosting.Internal.WebHost.EnsureApplicationServices()
+   at Microsoft.AspNetCore.Hosting.Internal.WebHost.BuildApplication()
+2022-03-14 16:47:15.659 -06:00 [DBG] Starting token cleanup
+2022-03-14 16:48:11.851 -06:00 [ERR] Failed executing DbCommand (113ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+CREATE DATABASE [IDENTITY];
+System.Data.SqlClient.SqlException (0x80131904): CREATE DATABASE permission denied in database 'master'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+ClientConnectionId:9d1e47aa-187a-4d28-a1f6-80c3f2a4dacf
+Error Number:262,State:1,Class:14
+2022-03-14 16:48:48.856 -06:00 [ERR] Failed executing DbCommand (106ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+CREATE DATABASE [IDENTITY];
+System.Data.SqlClient.SqlException (0x80131904): CREATE DATABASE permission denied in database 'master'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+ClientConnectionId:12dc8e45-ac50-4b54-80c5-bbe23b6396cf
+Error Number:262,State:1,Class:14
+2022-03-14 16:48:49.024 -06:00 [FTL] Application startup exception
+System.Data.SqlClient.SqlException (0x80131904): CREATE DATABASE permission denied in database 'master'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteNonQuery(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.MigrationCommandExecutor.ExecuteNonQuery(IEnumerable`1 migrationCommands, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.SqlServerDatabaseCreator.Create()
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at identity.Startup.InitializeDatabase(IApplicationBuilder app) in C:\Users\alberth\Desktop\IdentityServer4\IdentityServer4\Startup.cs:line 118
+   at identity.Startup.Configure(IApplicationBuilder app) in C:\Users\alberth\Desktop\IdentityServer4\IdentityServer4\Startup.cs:line 106
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Hosting.ConventionBasedStartup.Configure(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.Internal.WebHost.BuildApplication()
+ClientConnectionId:12dc8e45-ac50-4b54-80c5-bbe23b6396cf
+Error Number:262,State:1,Class:14
+2022-03-14 16:48:49.173 -06:00 [DBG] Starting token cleanup
+2022-03-14 16:49:54.977 -06:00 [DBG] Using idsrv as default scheme for authentication
+2022-03-14 16:49:55.011 -06:00 [DBG] Using idsrv as default scheme for sign-in
+2022-03-14 16:49:55.013 -06:00 [DBG] Using idsrv as default scheme for sign-out
+2022-03-14 16:49:55.013 -06:00 [DBG] Using idsrv as default scheme for challenge
+2022-03-14 16:49:55.013 -06:00 [DBG] Using idsrv as default scheme for forbid
+2022-03-14 16:49:55.456 -06:00 [DBG] Starting token cleanup
+2022-03-14 16:55:42.213 -06:00 [DBG] Using idsrv as default scheme for authentication
+2022-03-14 16:55:42.246 -06:00 [DBG] Using idsrv as default scheme for sign-in
+2022-03-14 16:55:42.246 -06:00 [DBG] Using idsrv as default scheme for sign-out
+2022-03-14 16:55:42.247 -06:00 [DBG] Using idsrv as default scheme for challenge
+2022-03-14 16:55:42.247 -06:00 [DBG] Using idsrv as default scheme for forbid
+2022-03-14 16:55:42.774 -06:00 [DBG] Starting token cleanup
+2022-03-14 16:55:50.889 -06:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2022-03-14 16:55:50.903 -06:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2022-03-14 16:55:50.905 -06:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2022-03-14 16:55:50.909 -06:00 [DBG] Start discovery request
+2022-03-14 16:55:55.256 -06:00 [DBG] Found ["openid","profile","api1"] as all scopes in database
+2022-03-14 16:56:06.597 -06:00 [INF] AuthenticationScheme: idsrv was challenged.
+2022-03-14 16:58:57.503 -06:00 [DBG] Using Bearer as default scheme for authentication
+2022-03-14 16:58:57.537 -06:00 [DBG] Using Bearer as default scheme for sign-in
+2022-03-14 16:58:57.538 -06:00 [DBG] Using Bearer as default scheme for sign-out
+2022-03-14 16:58:57.538 -06:00 [DBG] Using Bearer as default scheme for challenge
+2022-03-14 16:58:57.538 -06:00 [DBG] Using Bearer as default scheme for forbid
+2022-03-14 16:58:58.031 -06:00 [DBG] Starting token cleanup
+2022-03-14 17:07:38.882 -06:00 [DBG] Using Bearer as default scheme for authentication
+2022-03-14 17:07:38.968 -06:00 [DBG] Using Bearer as default scheme for sign-in
+2022-03-14 17:07:38.969 -06:00 [DBG] Using Bearer as default scheme for sign-out
+2022-03-14 17:07:38.969 -06:00 [DBG] Using Bearer as default scheme for challenge
+2022-03-14 17:07:38.970 -06:00 [DBG] Using Bearer as default scheme for forbid
+2022-03-14 17:07:39.982 -06:00 [DBG] Starting token cleanup
+2022-03-14 17:09:26.319 -06:00 [DBG] Using Bearer as default scheme for authentication
+2022-03-14 17:09:26.353 -06:00 [DBG] Using Bearer as default scheme for sign-in
+2022-03-14 17:09:26.354 -06:00 [DBG] Using Bearer as default scheme for sign-out
+2022-03-14 17:09:26.354 -06:00 [DBG] Using Bearer as default scheme for challenge
+2022-03-14 17:09:26.354 -06:00 [DBG] Using Bearer as default scheme for forbid
+2022-03-14 17:09:26.899 -06:00 [DBG] Starting token cleanup
