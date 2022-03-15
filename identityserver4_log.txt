@@ -90,3 +90,9 @@ Error Number:262,State:1,Class:14
 2022-03-14 17:09:26.354 -06:00 [DBG] Using Bearer as default scheme for challenge
 2022-03-14 17:09:26.354 -06:00 [DBG] Using Bearer as default scheme for forbid
 2022-03-14 17:09:26.899 -06:00 [DBG] Starting token cleanup
+2022-03-14 23:36:18.459 -06:00 [DBG] Using Bearer as default scheme for authentication
+2022-03-14 23:36:18.509 -06:00 [DBG] Using Bearer as default scheme for sign-in
+2022-03-14 23:36:18.510 -06:00 [DBG] Using Bearer as default scheme for sign-out
+2022-03-14 23:36:18.510 -06:00 [DBG] Using Bearer as default scheme for challenge
+2022-03-14 23:36:18.510 -06:00 [DBG] Using Bearer as default scheme for forbid
+2022-03-14 23:36:19.380 -06:00 [DBG] Starting token cleanup
